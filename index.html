@@ -331,77 +331,10 @@
   .step-dot.active { background: var(--gold); width: 24px; border-radius: 4px; }
   .step-dot.done { background: var(--gold-light); }
 
-  /* ── Lottery ── */
-  .lottery-box {
-    background: linear-gradient(135deg, #fdf8f0, #f5ede0);
-    border: 1.5px solid var(--gold-light);
-    border-radius: 14px;
-    padding: 28px;
-    margin-top: 28px;
-    text-align: center;
-  }
-  .lottery-title {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 17px; color: var(--text-dark);
-    margin-bottom: 6px; font-weight: 500;
-  }
-  .lottery-subtitle {
-    font-size: 13px; color: var(--text-light);
-    margin-bottom: 20px; line-height: 1.7;
-  }
-  .lottery-input-wrap {
-    display: flex; gap: 10px;
-    max-width: 420px; margin: 0 auto;
-  }
-  .lottery-input-wrap input[type=email] {
-    flex: 1; padding: 12px 16px;
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    font-family: 'Noto Sans TC', sans-serif;
-    font-size: 14px; color: var(--text-dark);
-    background: white; outline: none;
-    transition: border-color 0.2s;
-  }
-  .lottery-input-wrap input[type=email]:focus {
-    border-color: var(--gold);
-    box-shadow: 0 0 0 3px rgba(201,169,110,0.15);
-  }
-  .btn-lottery {
-    padding: 12px 24px;
-    border: none; border-radius: 10px;
-    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-    font-family: 'Noto Sans TC', sans-serif;
-    font-size: 14px; font-weight: 500;
-    color: white; cursor: pointer;
-    transition: all 0.2s; white-space: nowrap;
-    box-shadow: 0 4px 12px rgba(160,120,64,0.3);
-  }
-  .btn-lottery:hover { transform: translateY(-1px); }
-  .btn-lottery:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-  .lottery-note {
-    font-size: 12px; color: var(--text-light);
-    margin-top: 12px; line-height: 1.6;
-  }
-  .lottery-success {
-    display: none;
-    background: #f0faf4;
-    border: 1.5px solid #a8d5b8;
-    border-radius: 10px;
-    padding: 16px; margin-top: 16px;
-    font-size: 14px; color: #2d7a4a;
-  }
-  .lottery-skip {
-    font-size: 12px; color: var(--text-light);
-    margin-top: 14px; cursor: pointer;
-    text-decoration: underline;
-    display: block;
-  }
-
   @media (max-width: 480px) {
     .likert-7 .btn { font-size: 11px; }
     .likert-5 .btn { font-size: 12px; }
     .card { padding: 20px; }
-    .lottery-input-wrap { flex-direction: column; }
   }
 </style>
 </head>
@@ -428,32 +361,34 @@
   <div class="page active" id="page-0">
     <div class="page-header">
       <div class="page-tag">研究說明</div>
-      <h1 class="page-title">動作美感與身體知覺研究</h1>
+      <h1 class="page-title">動作審美相關量表之探索性因素分析：節律穩定性、動作流暢性、身體軸線控制與審美自我量表之信效度初步驗證</h1>
       <div class="divider"></div>
-      <p class="page-subtitle">高雄醫學大學心理學系｜碩士研究計畫<br>預計填答時間：約 15–20 分鐘</p>
+      <p class="page-subtitle">
+        高雄醫學大學心理學系｜碩士研究計畫<br>
+        研究者：林詩琦　｜　指導教授：林錦宏教授<br>
+        聯絡電話：07-3215422 轉 822　｜　0983-878-205<br>
+        預計填答時間：約 15–20 分鐘
+      </p>
     </div>
 
     <div class="card">
       <div class="consent-box">
-        <p>您好，感謝您願意參與本研究。本研究由高雄醫學大學心理學系碩士生<strong>林詩琦</strong>執行，指導教授為<strong>林錦宏教授</strong>。本計畫已通過高雄醫學大學附設中和紀念醫院人體試驗委員會（IRB）倫理審查，計畫編號：<strong>（IRB編號待填入）</strong>。</p>
+        <p>您好，感謝您願意參與本研究。本研究由高雄醫學大學心理學系碩士生<strong>林詩琦</strong>執行，指導教授為<strong>林錦宏教授</strong>，本計畫已通過IRB倫理審查。</p>
 
         <h4>研究目的</h4>
-        <p>本研究旨在驗證五份與「身體動作感知」及「身體態度」相關的心理量表測量特性，包括節律穩定性、動作流暢性、身體軸線控制、審美自我及身體欣賞量表，作為後續縱貫研究的核心測量工具，探討動作美感如何影響個體的心理健康與身體意象。</p>
+        <p>本研究旨在驗證五份與「身體動作感知」及「身體態度」相關的心理量表測量特性，作為後續長期研究的基礎工具，探討動作美感如何影響個體的心理健康與身體意象。</p>
 
         <h4>參與條件</h4>
-        <p>年滿18歲之成年人皆可參與。目前或曾有任何形式的身體訓練或運動習慣（如舞蹈、健身、瑜伽、武術、走秀、運動競技等）者尤為歡迎，無相關經驗者亦可填答。</p>
+        <p>年滿18歲，目前或曾有任何形式的身體訓練或運動習慣（如舞蹈、健身、瑜伽、武術、走秀、運動競技等）。若無經驗也歡迎您填表。</p>
 
         <h4>填答說明</h4>
-        <p>問卷共分六個部分，包含基本資料及五份量表，共約38題，預計填答時間15–20分鐘。每個部分皆可返回前頁修改，但提交後資料無法撤回。</p>
+        <p>問卷共分六個部分，包含基本資料及五份量表，共約48題。每個部分皆可返回前頁修改，但提交後資料無法撤回。</p>
 
         <h4>匿名與資料保護</h4>
-        <p>本問卷採完全匿名設計，問卷資料不收集任何可識別個人身份之資訊。所有資料僅供學術研究使用，以群體統計方式呈現，加密保存至少五年。抽獎所填寫之電子郵件與問卷資料<strong>分開保存</strong>，不會與您的作答內容連結，以確保匿名性。</p>
-
-        <h4>抽獎回饋</h4>
-        <p>感謝您的寶貴時間！完成問卷後，您可自願參與抽獎。獎品為 <strong>LINE Points 50 點</strong>（約等值新台幣 50 元），共 <strong>50 名</strong>（預計中獎率約 20%）。留下電子郵件純屬自願，不參與抽獎者之問卷資料同樣納入分析，不影響研究參與。</p>
+        <p>本問卷採完全匿名設計，不收集任何可識別個人身份的資訊。所有資料僅供學術研究使用，以群體統計方式呈現，加密保存至少五年。</p>
 
         <h4>權益保障</h4>
-        <p>您的參與純屬自願，可隨時停止填答且無需說明理由。退出不會對您產生任何不利影響。所有資料僅供學術統計分析使用，絕對保密，請安心填答。</p>
+        <p>本調查採匿名方式進行，所有資料僅供學術統計分析使用，絕對保密，請安心填答。您的參與純屬自願，可隨時停止填答。</p>
 
         <h4>聯絡資訊</h4>
         <p>研究者：林詩琦｜指導教授：林錦宏教授｜高雄醫學大學心理學系｜電話：07-3215422 轉 822</p>
@@ -662,33 +597,6 @@
         如有任何疑問，歡迎聯絡研究者：林詩琦<br>
         高雄醫學大學心理學系
       </p>
-
-      <!-- 抽獎區塊 -->
-      <div class="lottery-box" id="lotteryBox">
-        <div class="lottery-title">🎁 參與抽獎</div>
-        <p class="lottery-subtitle">
-          留下您的 Email，即可參與抽獎！<br>
-          獎品：LINE Points 50 點 ／ 共 50 名（中獎率約 20%）<br>
-          中獎者將以 Email 通知，抽獎資料與問卷資料分開保存。
-        </p>
-        <div class="lottery-input-wrap">
-          <input type="email" id="lotteryEmail" placeholder="請輸入您的 Email">
-          <button class="btn-lottery" id="btnLottery" onclick="submitLottery()">送出參加</button>
-        </div>
-        <p class="lottery-note">
-          ＊留下 Email 純屬自願，不影響問卷資料之採用。<br>
-          ＊Email 僅用於中獎通知，不作其他用途。
-        </p>
-        <div class="lottery-success" id="lotterySuccess">
-          ✓ 已成功登記抽獎！感謝您的參與，中獎結果將以 Email 通知。
-        </div>
-        <span class="lottery-skip" onclick="skipLottery()">不參加抽獎，略過此步驟</span>
-      </div>
-
-      <!-- 略過後顯示 -->
-      <div id="lotteryDone" style="display:none; margin-top:24px; font-size:13px; color:var(--text-light);">
-        感謝您完成本研究問卷。祝您有美好的一天！
-      </div>
     </div>
   </div>
 
@@ -897,52 +805,7 @@ function prevPage(current) {
   showPage(current - 1);
 }
 
-// ── 抽獎提交 ──────────────────────────────────────────────
-
-async function submitLottery() {
-  const email = document.getElementById('lotteryEmail').value.trim();
-  if (!email || !email.includes('@')) {
-    alert('請輸入有效的 Email 地址。');
-    return;
-  }
-
-  const btn = document.getElementById('btnLottery');
-  btn.disabled = true;
-  btn.textContent = '送出中…';
-
-  try {
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/lottery_entries`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'apikey': SUPABASE_KEY,
-        'Authorization': `Bearer ${SUPABASE_KEY}`,
-        'Prefer': 'return=minimal'
-      },
-      body: JSON.stringify({ email: email })
-    });
-
-    if (res.ok || res.status === 201) {
-      document.getElementById('lotterySuccess').style.display = 'block';
-      document.getElementById('lotteryEmail').style.display = 'none';
-      btn.style.display = 'none';
-      document.querySelector('.lottery-skip').style.display = 'none';
-    } else {
-      alert('送出失敗，請稍後再試。');
-      btn.disabled = false;
-      btn.textContent = '送出參加';
-    }
-  } catch (e) {
-    alert('網路連線異常，請確認網路後再試。');
-    btn.disabled = false;
-    btn.textContent = '送出參加';
-  }
-}
-
-function skipLottery() {
-  document.getElementById('lotteryBox').style.display = 'none';
-  document.getElementById('lotteryDone').style.display = 'block';
-}
+// ── 取值與計分 ──────────────────────────────────────────────
 
 function getVal(name) {
   const el = document.querySelector(`input[name="${name}"]:checked`);
