@@ -311,6 +311,28 @@
   }
   .success-desc { font-size: 14px; color: var(--text-light); line-height: 1.8; }
 
+  .lottery-box { text-align: left; margin-top: 8px; }
+  .lottery-box h4 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 16px; color: var(--text-dark); margin-bottom: 8px; text-align: center;
+  }
+  .lottery-desc {
+    font-size: 13px; color: var(--text-light); line-height: 1.8; text-align: center;
+  }
+  .lottery-input {
+    width: 100%; padding: 12px 16px;
+    border: 1px solid var(--border); border-radius: 8px;
+    background: #fff; font-size: 14px; color: var(--text-dark);
+    font-family: 'Noto Sans TC', sans-serif;
+  }
+  .lottery-input:focus { outline: none; border-color: var(--gold); }
+  .lottery-status {
+    text-align: center; font-size: 13px; margin-top: 12px; min-height: 18px;
+  }
+  .lottery-status.success { color: var(--success); }
+  .lottery-status.error { color: var(--error); }
+
+
   /* ── Page transition ── */
   .page { display: none; animation: fadeIn 0.4s ease; }
   .page.active { display: block; }
@@ -597,6 +619,24 @@
         如有任何疑問，歡迎聯絡研究者：林詩琦<br>
         高雄醫學大學心理學系
       </p>
+
+      <div class="divider"></div>
+
+      <div class="lottery-box">
+        <h4>抽獎活動（選填）</h4>
+        <p class="lottery-desc">
+          感謝您的參與！若您願意留下 Email，將有機會抽中 LINE POINTS 50點。<br>
+          此 Email 將獨立儲存，不會與您的問卷答案產生任何關聯。<br>
+          不填寫不影響問卷已提交之結果。
+        </p>
+        <div class="field" style="margin-top:16px;">
+          <input type="email" id="lottery-email" class="lottery-input" placeholder="您的 Email（選填）">
+        </div>
+        <div class="btn-row" style="justify-content:center; margin-top:16px;">
+          <button class="btn-next" onclick="submitLottery()" id="btn-lottery">參加抽獎</button>
+        </div>
+        <p class="lottery-status" id="lottery-status"></p>
+      </div>
     </div>
   </div>
 
@@ -822,7 +862,57 @@ function calcTotal(items, reverseMax) {
 
 // ── 提交 ──────────────────────────────────────────────
 
-const SUPABASE_URL = 'https://zxkkvcrtvvflkvpiniyx.supabase.co';
+async function submitLottery() {
+  const emailEl = document.getElementById('lottery-email');
+  const statusEl = document.getElementById('lottery-status');
+  const btn = document.getElementById('btn-lottery');
+  const email = emailEl.value.trim();
+
+  if (!email) {
+    statusEl.textContent = '請輸入 Email，或直接關閉頁面。';
+    statusEl.className = 'lottery-status error';
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    statusEl.textContent = 'Email 格式不正確，請重新輸入。';
+    statusEl.className = 'lottery-status error';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = '送出中…';
+
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/lottery_entries`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({ email })
+    });
+
+    if (res.ok || res.status === 201) {
+      statusEl.textContent = '已成功登記，感謝您的參與！';
+      statusEl.className = 'lottery-status success';
+      btn.textContent = '已登記 ✓';
+      emailEl.disabled = true;
+    } else {
+      statusEl.textContent = '登記時發生錯誤，請稍後再試。';
+      statusEl.className = 'lottery-status error';
+      btn.disabled = false;
+      btn.textContent = '參加抽獎';
+    }
+  } catch (e) {
+    statusEl.textContent = '網路連線異常，請確認網路後再試。';
+    statusEl.className = 'lottery-status error';
+    btn.disabled = false;
+    btn.textContent = '參加抽獎';
+  }
+}
+
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp4a2t2Y3J0dnZmbGt2cGluaXl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc1NDY1MDAsImV4cCI6MjA5MzEyMjUwMH0.zOCP-VIFBVIOUff-XAY0RObfTz2ouFz2W62ulyuPgy0';
 
 async function submitSurvey() {
